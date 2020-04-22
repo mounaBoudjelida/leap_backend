@@ -25,8 +25,8 @@ module.exports = (sequelize) => {
 
 permissions.associate = function(models) {
     // associations can be defined here
-    user.belongsTo(models.User, { as: 'createdBy', targetKey: 'id' });
-    user.belongsTo(models.User,  {  as: 'updatedBy', targetKey: 'id' });
+    permissions.belongsTo(models.User, { as: 'createdBy', targetKey: 'id' });
+    permissions.belongsTo(models.User,  {  as: 'updatedBy', targetKey: 'id' });
     
     
   };

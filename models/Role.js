@@ -28,8 +28,8 @@ module.exports = (sequelize) => {
 
 role.associate = function(models) {
     // associations can be defined here
-    user.belongsTo(models.User, { as: 'createdBy', targetKey: 'id' });
-    user.belongsTo(models.User,  {  as: 'updatedBy', targetKey: 'id' });
+    role.belongsTo(models.User, { as: 'createdBy', targetKey: 'id' });
+    role.belongsTo(models.User,  {  as: 'updatedBy', targetKey: 'id' });
     
     
   };
