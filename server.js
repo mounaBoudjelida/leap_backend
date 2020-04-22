@@ -25,14 +25,23 @@ app.use(bodyParser.urlencoded({limit: '10mb', extended: true}))
 // Definition des modeles
 const models = require('./models');
 const user =models.User;
-const roles=models.Roles;
+const role=models.Role;
+const permissions=models.Permissions;
+
+
+// Definition of controllers
+const rolesCtrl=require('./controleurs/RolesCtrl')(user, role, permissions);
+const permissionsCtrl=require('./controleurs/PermissionsCtrl')(user, permissions);
 
 
 
 
 
-
-
+// Definition of routes
+const rolesRoutes = require('./routes/RolesRoutes')(express, rolesCtrl);
+app.use('/roles', rolesRoutes);
+const permissionsRoutes = require('./routes/PermissionsRoutes')(express, permissionsCtrl);
+app.use('/permissions', permissionsRoutes);
 
 
 //Launching the server: 
