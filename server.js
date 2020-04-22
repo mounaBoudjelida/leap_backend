@@ -44,6 +44,13 @@ const permissionsRoutes = require('./routes/PermissionsRoutes')(express, permiss
 app.use('/permissions', permissionsRoutes);
 
 
+
+//The route to swagger documentation
+var swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('./swagger.json');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 //Launching the server: 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Server listening on port: ${port}`));
